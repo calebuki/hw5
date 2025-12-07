@@ -91,12 +91,8 @@ bool backtracker(const AvailabilityMatrix& avail,
 
         //just because they are available != they are not working!
         //if they aren't already working today, TRY:
-        bool working_today = false;
-        for (int i = 0; i < col; i++){
-          if (sched[day][i] == worker){
-            working_today = true;
-          }
-        }
+        bool working_today = (std::find(sched[day].begin(), sched[day].begin() + col, worker)
+                              != sched[day].begin() + col);
 
         if (!working_today){
           sched[day][col] = worker;
