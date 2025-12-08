@@ -25,9 +25,9 @@ bool backtracker(const AvailabilityMatrix& avail,
                  const size_t dailyNeed,
                  const size_t maxShifts,
                  DailySchedule& sched,
-                 int day,
-                 int col,
-                 std::vector<int>& worker_shifts);
+                 unsigned int day,
+                 unsigned int col,
+                 std::vector<size_t>& worker_shifts);
 
 // Add your implementation of schedule() and other helper functions here
 
@@ -44,16 +44,16 @@ bool schedule(
     sched.clear();
     // Add your code below
 
-    int days = avail.size();
-    int workers = avail[0].size();
+    unsigned int days = avail.size();
+    unsigned int workers = avail[0].size();
 
     sched.resize(days);
-    for (int i = 0; i < days; i++){
+    for (unsigned int i = 0; i < days; i++){
       sched[i].resize(dailyNeed, INVALID_ID);
     }
 
     //keep track of how many shifts per worker
-    std::vector<int> worker_shifts(workers, 0);
+    std::vector<size_t> worker_shifts(workers, 0);
 
     return backtracker(avail, dailyNeed, maxShifts, sched, 0, 0, worker_shifts);
 
@@ -67,9 +67,9 @@ bool backtracker(const AvailabilityMatrix& avail,
                  const size_t dailyNeed,
                  const size_t maxShifts,
                  DailySchedule& sched,
-                 int day,
-                 int col,
-                 std::vector<int>& worker_shifts){
+                 unsigned int day,
+                 unsigned int col,
+                 std::vector<size_t>& worker_shifts){
   //start
 
   //if we are at the end of the col, move to next day

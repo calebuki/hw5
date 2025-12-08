@@ -18,8 +18,8 @@ void wordFinder(const std::string &in,
                 std::string current_word,
                 const std::set<std::string> &dict,
                 std::set<std::string> &words,
-                int index,
-                int blanks);
+                unsigned int index,
+                unsigned int blanks);
 
 
 // Definition of primary wordle function
@@ -29,10 +29,10 @@ std::set<std::string> wordle(
     const std::set<std::string>& dict)
 {
     // Add your code here
-    int blanks = 0;
+    unsigned int blanks = 0;
     std::set<std::string> words;
 
-    for (int i = 0; i < in.length(); i++){
+    for (unsigned int i = 0; i < in.length(); i++){
         if (in[i] == '-'){
             blanks++;
         }
@@ -49,8 +49,8 @@ void wordFinder(const std::string &in,
                 std::string current_word,
                 const std::set<std::string> &dict,
                 std::set<std::string> &words,
-                int index,
-                int blanks){
+                unsigned int index,
+                unsigned int blanks){
     
     //base case: if the word `in` is filled, then check if its real
     if (index == in.length()){
@@ -67,7 +67,7 @@ void wordFinder(const std::string &in,
 
             //check if `i` is a yellow char
             //if not found, yellow_index > length of
-            int yellow_index = yellow.find(i);
+            unsigned int yellow_index = yellow.find(i);
 
             bool is_yellow = yellow_index < yellow.length();
 
